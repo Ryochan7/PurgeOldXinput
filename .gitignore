@@ -386,3 +386,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+!/PurgeOldXInput/libs/x64/
+!/PurgeOldXInput/libs/x86/
