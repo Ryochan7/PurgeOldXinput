@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Platforms>x64;x86</Platforms>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <StartupObject>PurgeOldXInput.Program</StartupObject>
@@ -34,7 +34,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nefarius.Devcon" Version="1.4.41" />
+    <None Remove="libs\x64\**" Condition="'$(Platform)' != 'x64'" />
+    <None Remove="libs\x86\**" Condition="'$(Platform)' != 'x86'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ManagedDevcon">
+      <HintPath>..\libs\$(Platform)\ManagedDevcon\ManagedDevcon.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
